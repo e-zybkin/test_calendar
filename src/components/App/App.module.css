@@ -1,0 +1,61 @@
+.newEventBox {
+	max-width: 800px;
+	padding-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.newEventBox__form {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.filter__switch{
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+}
+
+.filter__switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.filter__slider{
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  background-color: rgba(235, 235, 235, 0.8);
+  transition: 0.3s;
+}
+
+.filter__slider::before{
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  left: 6px;
+  bottom: 6px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+input:checked + .filter__slider{
+  background-color: #3DDC84;
+}
+
+input:checked + .filter__slider::before{
+  transform: translateX(+16px);
+  background-color: #F5F5F5;
+}
