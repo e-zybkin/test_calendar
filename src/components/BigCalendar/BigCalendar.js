@@ -22,8 +22,15 @@ function BigCalendar(props) {
 
 	const weekendStyle = {
 		backgroundColor: 'red',
-		color: 'green',
 	};
+
+	const otherMonthStyle = {
+		backgroundColor: '#545454'
+	}
+
+	const nowadays = {
+		backgroundColor: 'violet'
+	}
 
 	//это для пн,вт и тд.
 	const { defaultDate, formats } = useMemo(
@@ -53,8 +60,8 @@ function BigCalendar(props) {
 					marginLeft: "auto",
 					marginRight: 'auto',
 					marginTop: '50px',
-					color: 'violet',
-					backgroundColor: props.classes //это пропс для смены темы
+					//color: 'violet',
+					//backgroundColor: props.classes //это пропс для смены темы
 				}}
 				//это для русификации панельки
 				messages={{
@@ -71,10 +78,21 @@ function BigCalendar(props) {
 					yesterday: 'Вчера',
 					tomorrow: 'Завтра',
 					today: 'Сегодня',
-					agenda: 'Agenda',
+					agenda: 'Сводка',
 				}}
 				dayPropGetter={(date) => {
 					const dayOfWeek = date.getDay();
+					const dateOfMonth = date.getMonth();
+					const nowMonth = new Date().getMonth();
+					const nowDay = new Date().getDate();
+					const dayOfMonth = date.getDate();
+
+					if (dateOfMonth !== nowMonth) {
+						return ({ style: otherMonthStyle });
+					} else if (nowDay === dayOfMonth) {
+						return ({ style: nowadays });
+					}
+
 					return ((dayOfWeek === 0 || dayOfWeek === 6) ? { style: weekendStyle } : {});
 				}}
 			/>

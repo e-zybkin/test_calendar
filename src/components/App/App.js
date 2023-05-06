@@ -3,7 +3,8 @@ import styles from './App.module.css';
 import BigCalendar from '../BigCalendar/BigCalendar';
 import PrimeTimePicker from '../PrimeTimePicker/PrimeTimePicker';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import 'primereact/resources/themes/lara-light-indigo/theme.css';
+//import 'primereact/resources/themes/lara-light-indigo/theme.css';
+import 'primereact/resources/themes/lara-dark-indigo/theme.css';
 import 'primereact/resources/primereact.min.css';
 
 const events = [
@@ -94,7 +95,7 @@ function App() {
 			
 			<BigCalendar 
 				events={allEvents}
-				classes= {darkMode ? darkTheme : ''}
+				//classes= {darkMode ? darkTheme : ''}
 			/>
 		</>
   );
