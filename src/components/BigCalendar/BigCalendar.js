@@ -60,8 +60,6 @@ function BigCalendar(props) {
 					marginLeft: "auto",
 					marginRight: 'auto',
 					marginTop: '50px',
-					//color: 'violet',
-					//backgroundColor: props.classes //это пропс для смены темы
 				}}
 				//это для русификации панельки
 				messages={{

@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './App.module.css';
 import BigCalendar from '../BigCalendar/BigCalendar';
 import PrimeTimePicker from '../PrimeTimePicker/PrimeTimePicker';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-//import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import 'primereact/resources/themes/lara-dark-indigo/theme.css';
 import 'primereact/resources/primereact.min.css';
 
 const events = [
@@ -36,7 +34,19 @@ function App() {
 	const [allEvents, setAllEvents] = useState(events)
 	const [darkMode, setDarkMode] = useState(false);
 
-	const darkTheme = '#C3C3C3';
+	useEffect(() => {
+		let themeLink = document.getElementById('app-theme');
+		console.log(themeLink);
+		
+		const darkTheme = 'lara-dark-indigo';
+		
+		const lightTheme = 'lara-light-indigo';
+		
+		if (themeLink) {
+			themeLink.href = `${process.env.PUBLIC_URL}/themes/${darkMode ? darkTheme : lightTheme}/theme.css`;
+		}
+		
+	}, [darkMode]);
 
 	function handleAddEvent() {
 		setAllEvents([...allEvents, newEvent]);
@@ -44,7 +54,6 @@ function App() {
 
 	function handleDarkTheme() {
 		setDarkMode(!darkMode)
-		
 	}
 
   return (
@@ -95,7 +104,6 @@ function App() {
 			
 			<BigCalendar 
 				events={allEvents}
-				//classes= {darkMode ? darkTheme : ''}
 			/>
 		</>
   );
